@@ -1,7 +1,7 @@
 def codeCheckout() {
     stage('Code Checkout') {
         sh 'find . | sed 1d |xargs rm -rf'
-        git branch: 'main', url: "https://github.com/Ayoddeji61/${COMPONENT}.git"
+        git branch: 'main', url: "https://github.com/Ayodeji61/${COMPONENT}.git"
     }
 }
 
