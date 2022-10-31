@@ -34,13 +34,13 @@ def artifacts() {
     if ( env.TAG_NAME ==~ ".*" ) {
 
         stage('Prepare Artifacts') {
-            if ( env.APPTYPE == "nodejs" ) {
+            if (env.APPTYPE == "nodejs") {
                 sh '''
                     npm install
                     zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
                    '''
             }
-            if ( env.APPTYPE == "java" ) {
+            if (env.APPTYPE == "java") {
                 sh '''
                     mvn clean package
                     mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
@@ -48,12 +48,12 @@ def artifacts() {
                    '''
 
             }
-            if ( env.APPTYPE == "python" ) {
+            if (env.APPTYPE == "python") {
                 sh '''
                     zip -r ${COMPONENT}-${TAG_NAME}.zip *.py ${COMPONENT}.ini requirements.txt
                    '''
             }
-            if ( env.APPTYPE == "nginx" ) {
+            if (env.APPTYPE == "nginx") {
                 sh '''
                     cd static
                     zip -r ../${COMPONENT}-${TAG_NAME}.zip *
