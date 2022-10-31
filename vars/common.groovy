@@ -33,12 +33,36 @@ def codeChecks() {
 def artifacts() {
     if ( env.TAG_NAME ==~ ".*" ) {
 
-        stage('Download Dependecies') {
-            echo 'Download Dependencies'
+        stage('Prepare Artifacts') {
+            if ( env.APPTYPE == "nodejs" ) {
+                sh '''
+                    npm install
+                    zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
+                   '''
+            }
+            if ( env.APPTYPE == "java" ) {
+                sh '''
+                    mvn clean package
+                    mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
+                    zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar
+                   '''
+
+            }
+            if ( env.APPTYPE == "python" ) {
+                sh '''
+                    zip -r ${COMPONENT}-${TAG_NAME}.zip *.py ${COMPONENT}.ini requirements.txt
+                   '''
+            }
+            if ( env.APPTYPE == "nginx" ) {
+                sh '''
+                    cd static
+                    zip -r ../${COMPONENT}-${TAG_NAME}.zip *
+                   '''
+            }
         }
 
-        stage('Prepare Artifacts') {
-            echo 'Prepare Artifacts'
+        stage('Publish Artifacts') {
+            echo 'Publish Artifacts'
         }
         }
     }
