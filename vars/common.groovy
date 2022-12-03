@@ -31,13 +31,13 @@ def codeChecks() {
 }
 
 def docker() {
-    if ( env.TAG_NAME ==~ ".*" ) {
+  //  if ( env.TAG_NAME ==~ ".*" ) {
 
         stage('Build Docker Image') {
             sh '''
                 docker build .
                 '''
-        }
+       }
 
         stage('Publish Artifacts') {
             withCredentials([usernamePassword(credentialsId: 'NEXUS', passwordVariable: 'nexusPass', usernameVariable: 'nexusUser')]) {
@@ -46,5 +46,5 @@ def docker() {
                 '''
             }
         }
-        }
+        //}
     }
