@@ -88,6 +88,5 @@ def artifacts() {
           //  }
        // }
 
-
        }
     }
