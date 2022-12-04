@@ -67,6 +67,7 @@ def artifacts() {
                 '''
         }
 
+
     if ( env.TAG_NAME ==~ ".*" ) {
 
         stage('Publish Docker Image'){
