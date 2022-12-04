@@ -37,7 +37,7 @@ def artifacts() {
             if (env.APPTYPE == "nodejs") {
                 sh '''
                     npm install
-                 #   zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
+                 #zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
                    '''
             }
             if (env.APPTYPE == "java") {
@@ -68,7 +68,7 @@ def artifacts() {
         }
 
 
-    if ( env.TAG_NAME ==~ ".*" ) {
+    //if ( env.TAG_NAME ==~ ".*" ) {
 
         stage('Publish Docker Image'){
             sh '''
@@ -87,5 +87,5 @@ def artifacts() {
        // }
 
 
-        }
+      //  }
     }
