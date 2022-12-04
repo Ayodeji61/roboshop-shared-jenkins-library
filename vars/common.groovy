@@ -73,8 +73,8 @@ def artifacts() {
         stage('Publish Docker Image'){
             sh '''
                 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 137612699874.dkr.ecr.us-east-1.amazonaws.com
-                docker tag 137612699874.dkr.ecr.us-east-1.amazonaws.com/cart:latest 137612699874.dkr.ecr.us-east-1.amazonaws.com/cart:${TAG_NAME}
-                docker push 137612699874.dkr.ecr.us-east-1.amazonaws.com/cart:${TAG_NAME}
+                docker tag 137612699874.dkr.ecr.us-east-1.amazonaws.com/cart:latest 137612699874.dkr.ecr.us-east-1.amazonaws.com/:${TAG_NAME}
+                docker push 137612699874.dkr.ecr.us-east-1.amazonaws.com/:${TAG_NAME}
                 '''
         }
 
