@@ -78,6 +78,7 @@ def artifacts() {
                 '''
         }
 
+
       //  stage('Publish Artifacts') {
          //   withCredentials([usernamePassword(credentialsId: 'NEXUS', passwordVariable: 'nexusPass', usernameVariable: 'nexusUser')]) {
              //   sh '''
