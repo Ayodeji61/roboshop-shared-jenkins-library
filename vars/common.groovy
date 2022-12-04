@@ -69,7 +69,6 @@ def artifacts() {
 
     if ( env.TAG_NAME ==~ ".*" ) {
 
-
         stage('Publish Docker Image'){
             sh '''
                 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 137612699874.dkr.ecr.us-east-1.amazonaws.com
@@ -85,5 +84,7 @@ def artifacts() {
             //    '''
           //  }
        // }
+
+
         }
     }
