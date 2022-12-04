@@ -68,7 +68,7 @@ def artifacts() {
         }
 
 
-    //if ( env.TAG_NAME ==~ ".*" ) {
+    if ( env.TAG_NAME ==~ ".*" ) {
 
         stage('Publish Docker Image'){
             sh '''
@@ -87,5 +87,5 @@ def artifacts() {
        // }
 
 
-      //  }
+        }
     }
